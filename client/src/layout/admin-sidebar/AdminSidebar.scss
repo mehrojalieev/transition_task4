@@ -1,0 +1,68 @@
+@mixin f-style($f-size, $f-weight, $f-color) {
+    font-size: $f-size;
+    font-weight: $f-weight;
+    color: $f-color;
+}
+
+.admin-sidebar{
+    width: 100%;
+    max-width: 280px; 
+    height: 100vh;
+    background-color: var(--light-color);
+    padding: 0 1rem;
+}
+
+.sidebar-header{
+    padding-top: 2rem;
+    .sidebar-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 9px;
+    
+        img {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+        }
+    
+        h1 {
+            font-size: 32px !important;
+            font-weight: 500 !important;
+            color: var(--dark-color);
+        }
+    }
+}
+.sidebar-menu{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1rem;
+    width: 100%;
+    li{
+        width: 100% !important;
+        .menu-link{
+            padding: 8px 20px ;
+            width: 100%;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            column-gap: 8px;
+            i{
+                margin-top: 3px;
+                font-size: 23px;
+                color: #505C6A;
+            }
+            p{
+                @include f-style(17px, 500, #505C6A);
+            }
+        }
+        .menu-link--active{
+            background-color: var(--warning-color);
+            p, i{
+                color: var(--light-color);
+            }
+        }
+    }
+}

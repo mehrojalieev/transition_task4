@@ -1,0 +1,66 @@
+@mixin f-style($f-size, $f-weight, $f-color) {
+    font-size: $f-size;
+    font-weight: $f-weight;
+    color: $f-color;
+}
+
+.carousel-card{
+    position: relative;
+    margin: 10px 0;
+    width: 100%;
+    height: fit-content;
+    max-width: 300px !important;
+    border-radius: 6px;
+    text-align: left;
+    padding: 10px 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    .product-image{
+        width: 100% !important;
+        height: 170px !important;
+        object-fit: contain !important;
+    }
+    .discount{
+        position: absolute;
+        top: 4%;
+        right: 4%;
+        background-color: var(--warning-color);
+        color: var(--light-color);
+        padding: 4px 10px;
+        border-radius: 4px;
+        @include f-style(12px, 500, var(--light-color));
+
+    }
+    .product-name{
+        padding-top: 1rem;
+        padding-left: 10px;
+        margin-top: 1rem !important;
+        border-top: 1px solid rgba(82, 81, 81, 0.356);
+        margin-top: 10px;
+        @include f-style(16px, 500, var(--dark-color));
+    }
+    .price-item{
+        padding: 0 14px ;
+        margin-top: .8rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        strong{
+            @include f-style(16px, 500, var(--dark-color));
+        }
+        span{
+            @include f-style(14px, 400,var(--dark-color));
+            text-decoration: line-through;
+        }
+    }
+    .stars{
+        display: flex;
+        align-items: center;
+        column-gap: 5px;
+        margin-top: 10px;
+        padding-left: 10px;
+        i{
+            color: var(--warning-color);
+            font-size: 17px;
+        }
+    }
+}   

@@ -1,0 +1,48 @@
+@mixin f-style($f-size, $f-weight, $f-color) {
+    font-size: $f-size;
+    font-weight: $f-weight;
+    color: $f-color;
+}
+
+.user{
+    margin-top: 4rem !important;
+    .user-fullname{
+        @include f-style(28px, 600,  rgb(31, 32, 38));
+    }
+}
+.user__main-wrapper{
+    display: flex;
+    align-items: flex-start;
+    column-gap: 3rem;
+    margin-top: 1.5rem;
+}
+.user-sidebar{
+    max-width: 330px !important;
+    width: 100% !important;
+    .sidebar-menu{
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        row-gap: 1rem;
+        li{
+            width: 100% !important;
+            .menu-link{
+                display: inline-block;
+                width: 100% !important;
+                max-width: 100%;
+                border-radius: 12px;
+                padding: 10px 0 10px 20px;
+                @include f-style(16px, 400, var(--dark-color) !important);
+                &:hover{
+                    background-color: var(--warning-hover-color);
+                }
+            }
+            .menu-link--active{
+                @include f-style(16px, 400, var(--light-color) !important);
+                background-color: var(--warning-color);
+            }
+        }
+    }
+}

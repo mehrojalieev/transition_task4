@@ -1,0 +1,27 @@
+
+.table {
+    margin-top: 1.5rem;
+    width: 100% !important;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.table-header {
+    background-color: #e4e3e3;
+    height: 58px;
+    position: sticky;
+    top: 0;
+
+    tr {
+
+        th {
+            font-size: 17px;
+            font-weight: 500;
+        }
+    }
+}
+
+.products-table>.table-body {
+    overflow-y: auto;
+
+}
