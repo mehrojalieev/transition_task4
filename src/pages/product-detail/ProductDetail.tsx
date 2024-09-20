@@ -22,12 +22,14 @@ import { ProductType } from "../../types";
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<ProductType>();
+  console.log(product);
+  
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await ApiInstance.get(`/products/${id}`);
+        const response = await ApiInstance.get(`/product/${id}`);
         setProduct(response.data);
         console.log(response.data);
       } catch (error) {
@@ -57,7 +59,7 @@ const ProductDetail = () => {
             watchSlidesProgress={true}
             className="mySwiper variants-carousel"
           >
-            {product?.images.map((variant: string, index: number) => (
+            {product?.image.map((variant: string, index: number) => (
               <SwiperSlide key={index}>
                 <img src={variant} alt={`Variant ${index}`} />
               </SwiperSlide>
@@ -75,7 +77,7 @@ const ProductDetail = () => {
             modules={[FreeMode, Navigation, Thumbs]}
             className="mySwiper2"
           >
-            {product?.images.map((mainImage:string, index: number) => (
+            {product?.image.map((mainImage:string, index: number) => (
               <SwiperSlide key={index}>
                 <img src={mainImage} alt={`Main Image ${index}`} />
               </SwiperSlide>
@@ -91,7 +93,7 @@ const ProductDetail = () => {
           ))}
           <strong>Feedbacks</strong>
         </div>
-        <h2 className="product-name">{product?.title}</h2>
+        <h2 className="product-name">{product?.product_name}</h2>
         <div className="price__info-content">
           <div className="term__price-content">
             <span>Muddatli to'lovga sotib olish</span>

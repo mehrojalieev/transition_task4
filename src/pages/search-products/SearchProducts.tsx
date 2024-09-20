@@ -19,8 +19,8 @@ const SearchProducts = () => {
     useEffect(() => {
         async function SearchedProducts() {
                 try {
-                    const {data} = await ApiInstance.get(`/products`)
-                    const searchData = data.filter((product: ProductType) => product.title.toLowerCase().includes(param?.name.toLowerCase()))
+                    const {data} = await ApiInstance.get(`/product/all`)
+                    const searchData = data.filter((product: ProductType) => product.product_name.toLowerCase().includes(param?.name.toLowerCase()))
                     setSearchData(searchData)                    
                 } 
                 catch (error) {
