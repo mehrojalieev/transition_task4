@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./UserDetail.scss"
+import "./UserDetail.scss";
+
 const UserDetail = () => {
   const [formData, setFormData] = useState({
     lastName: '',
@@ -30,46 +31,47 @@ const UserDetail = () => {
     e.preventDefault();
     console.log('Form Data:', formData);
   };
+
   return (
     <div className="user__detail-box">
-      <h2 className="user__detail-title">Ma'lumotlarim</h2>
+      <h2 className="user__detail-title">My Information</h2>
       <form className="user-info-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <div className="form-field">
-            <label>Familiya *</label>
+            <label>Last Name *</label>
             <input
               type="text"
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              placeholder="Familiya"
+              placeholder="Last Name"
             />
           </div>
           <div className="form-field">
-            <label>Ism *</label>
+            <label>First Name *</label>
             <input
               type="text"
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              placeholder="Ism"
+              placeholder="First Name"
             />
           </div>
           <div className="form-field">
-            <label>Otasining ismi</label>
+            <label>Middle Name</label>
             <input
               type="text"
               name="middleName"
               value={formData.middleName}
               onChange={handleInputChange}
-              placeholder="Otasining ismi"
+              placeholder="Middle Name"
             />
           </div>
         </div>
         
         <div className="form-group">
           <div className="form-field">
-            <label>Tug'ilgan sana</label>
+            <label>Date of Birth</label>
             <input
               type="date"
               name="birthDate"
@@ -78,38 +80,39 @@ const UserDetail = () => {
             />
           </div>
           <div className="form-field">
-            <label>Jins</label>
+            <label>Gender</label>
             <div className="gender-buttons">
               <button
                 type="button"
-                className={formData.gender === 'Erkak' ? 'active' : ''}
-                onClick={() => handleGenderChange('Erkak')}
+                className={formData.gender === 'Male' ? 'active' : ''}
+                onClick={() => handleGenderChange('Male')}
               >
-                Erkak
+                Male
               </button>
               <button
                 type="button"
-                className={formData.gender === 'Ayol' ? 'active' : ''}
-                onClick={() => handleGenderChange('Ayol')}
+                className={formData.gender === 'Female' ? 'active' : ''}
+                onClick={() => handleGenderChange('Female')}
               >
-                Ayol
+                Female
               </button>
             </div>
           </div>
         </div>
+        
         <div className="form-group">
           <div className="form-field">
-            <label>Elektron pochta *</label>
+            <label>Email *</label>
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              placeholder="Elektron pochta"
+              placeholder="Email"
             />
           </div>
           <div className="form-field">
-            <label>Telefon raqami *</label>
+            <label>Phone Number *</label>
             <input
               type="tel"
               name="phone"
@@ -119,22 +122,21 @@ const UserDetail = () => {
             />
           </div>
         </div>
+        
         <div className="form-actions">
           <button type="button" className="logout-button">
-            Tizimdan chiqish
+            Log Out
           </button>
           <button type="button" className="cancel-button">
-            Bekor qilish
+            Cancel
           </button>
           <button type="submit" className="save-button">
-            Saqlash
+            Save
           </button>
         </div>
       </form>
-
-      {/* <h4 className="user__detail-title">Ma'lumotlarim</h4> */}
     </div>
-  )
-}
+  );
+};
 
-export default UserDetail
+export default UserDetail;

@@ -1,19 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import "./AnnouncementBar.scss"
-import { IoCallOutline, IoCloseSharp } from "react-icons/io5";
-import { useState } from "react";
+import { IoCallOutline } from "react-icons/io5";
 const AnnouncementBar = () => {
 
     const {pathname} = useLocation()
 
-    const [closeBarHeader, setCloseBarHeader] = useState<boolean>(false)
 
     return pathname.includes("/admin") ? null : pathname.includes("/auth") ? null : (
         <>
-            <div style={{ display: closeBarHeader ? "none" : "block" }} className="bar__header-image">
-                <img src="https://texnomart.uz/_nuxt/img/promotion-pc-ru.81305b7.webp" alt="Header image" />
-                <button onClick={() => setCloseBarHeader(true)} className="close__header-btn"><IoCloseSharp /></button>
-            </div>
+           
             <div className="announcement-bar">
                 <div className="announcement__bar-wrapper container" >
                     <a href="#" className="number-link">

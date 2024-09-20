@@ -11,7 +11,7 @@
     }
     img {
         width: 100%;
-        min-height: 150px !important;
+        max-height: 130px !important;
         object-fit: contain;
     }
 
@@ -66,14 +66,14 @@
         display: inline-block;
         color: var(--danger-color);
         font-weight: 500;
-        font-size: 16px;
+        font-size: 15px;
         margin-top: 5px;
     }
 
     .old-price {
         display: block;
         text-decoration: line-through;
-        font-size: 16px;
+        font-size: 15px;
         color: #a5b1bb;
         margin-top: 4px !important;
     }
@@ -82,15 +82,16 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 100%;
-        // max-width: 110px;
-        height: 35px;
+        width: 100% ;
+        max-width: 130px;
+        height: 38px;
         border-radius: 8px;
         background-color: var(--warning-color);
         border: none;
         font-weight: 450;
         margin-top: 15px;
         font-size: 14px;
+        letter-spacing: .5px !important;
 
         &:hover {
             background-color: var(--warning-hover-color);

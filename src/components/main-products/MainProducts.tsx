@@ -15,8 +15,10 @@ const MainProducts = () => {
     useEffect(() => {
         async function renderData() {
                 try {
-                    const {data} = await ApiInstance.get("/products")
+                    const {data} = await ApiInstance.get("/product/all")
                     setAllProducts(data)
+                    console.log(data);
+                    
                 } 
                 catch (error) {
                     console.log(error);

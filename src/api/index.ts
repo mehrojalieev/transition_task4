@@ -2,7 +2,7 @@
 import axios from "axios"
 
 const ApiInstance = axios.create({
-    baseURL: 'https://api.escuelajs.co/api/v1',
+    baseURL: 'https://transitiontask4-api.vercel.app',
     headers:{
         'Content-type': 'application/json'
     }

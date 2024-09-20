@@ -58,10 +58,10 @@ const ProductCard = ({ product }: { product: ProductType }) => {
 
       <div className="product__card-link">
         <Link to={`/product-detail/${product?.id}`}>
-          <img src={product?.images[0] ? product?.images[0] : 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D'} alt={product?.title} />
+          <img src={product?.image[0] ? product?.image[0] : 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D'} alt={product?.product_name} />
         </Link>
         <div className="product-name">
-          {product?.title?.slice(0, 25)}...
+          {product?.product_name?.slice(0, 20)}...
         </div>
         <div className="stars-feedback">
           <div className="stars">
@@ -71,7 +71,6 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             <FaStar />
             <FaStar />
           </div>
-          <span>4.8</span>
         </div>
         <strong className="price old-price">{product?.price} so'm</strong>
         <strong className="price">{product?.price - product?.price * 0.2} so'm</strong>
