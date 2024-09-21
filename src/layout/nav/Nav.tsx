@@ -8,6 +8,7 @@ import { BsCart3 } from "react-icons/bs";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/search-slice";
+import ApiInstance from "../../api";
 
 
 const CategoriesList = [
@@ -49,6 +50,22 @@ const Nav = () => {
             setInputValue("")
         }
     }, [pathname])
+
+    useEffect(() => {
+        async function LoadCategories() {
+            try {
+                const response = await ApiInstance.get("/categories")
+                console.log(response.data);
+                
+            } 
+            catch (error) {
+                console.log(error);
+                    
+            }
+        }
+
+        LoadCategories()
+    }, [])
 
     const handleSearchProduct = (e: any) => {
         e.preventDefault()
