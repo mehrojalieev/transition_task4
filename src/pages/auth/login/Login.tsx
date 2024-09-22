@@ -1,54 +1,42 @@
-import  { useState } from "react";
-import "./Login.scss";
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+import { Form, Button } from 'react-bootstrap';
+import { useAuth } from '../../../context/AuthContext';
+import ApiInstance from '../../../api';
 
-  const handleChange = (e: any) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+const Login: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useAuth();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: any) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Login data submitted:", formData);
+    try {
+      const response = await ApiInstance.post('/login', { email, password });
+      if (response.data.token) {
+        login(); // Set authentication state
+        navigate('/users'); // Redirect to user management
+      }
+    } catch (error) {
+      console.error('Login failed', error);
+    }
   };
 
   return (
-    <div className="login-form">
-      <h2 className="login-form__title">Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="login-form__group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="login-form__group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="login-form__submit">
-          Login
-        </button>
-      </form>
-      <p className="form__bottom-text">Don't have an account? <Link to="/auth/register">Register</Link></p>
-    </div>
+    <Form onSubmit={handleLogin}>
+      <h2>Login</h2>
+      <Form.Group className="mb-3">
+        <Form.Label>Email</Form.Label>
+        <Form.Control type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label>Password</Form.Label>
+        <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+      </Form.Group>
+      <Button type="submit" variant="primary">Login</Button>
+    </Form>
   );
 };
 
