@@ -12,7 +12,7 @@ const App: React.FC = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Container className="mt-4">
+        <Container >
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/register" element={<Register />} />
