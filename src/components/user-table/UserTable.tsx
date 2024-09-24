@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Table, Button } from 'react-bootstrap';
 import ApiInstance from '../../api';
+import './UserTable.scss';
 
 const UserTable: React.FC = () => {
   const [users, setUsers] = useState<any[]>([]);
@@ -8,8 +9,22 @@ const UserTable: React.FC = () => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await ApiInstance.get('/users');
-      setUsers(response.data);
+      try {
+        const token = localStorage.getItem('token');
+
+        if (token) {
+          const response = await ApiInstance.get('/api/users', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setUsers(response.data);
+        } else {
+          console.error('No token found');
+        }
+      } catch (error) {
+        console.error('Error fetching users', error);
+      }
     };
 
     fetchUsers();
@@ -24,30 +39,27 @@ const UserTable: React.FC = () => {
   };
 
   const handleBlock = async () => {
-    // Implement blocking logic
     console.log('Block users:', selectedUsers);
   };
 
   const handleUnblock = async () => {
-    // Implement unblocking logic
     console.log('Unblock users:', selectedUsers);
   };
 
   const handleDelete = async () => {
-    // Implement delete logic
     console.log('Delete users:', selectedUsers);
   };
 
   return (
-    <div>
+    <div className="user-table-container">
       <h2>User Management</h2>
-      <div className="mb-3">
-        <Button onClick={handleBlock} variant="danger" className="me-2">Block</Button>
-        <Button onClick={handleUnblock} variant="warning" className="me-2">Unblock</Button>
+      <div className="table-actions">
+        <Button onClick={handleBlock} variant="danger">Block</Button>
+        <Button onClick={handleUnblock} variant="warning">Unblock</Button>
         <Button onClick={handleDelete} variant="secondary">Delete</Button>
       </div>
 
-      <Table striped bordered hover>
+      <Table responsive bordered striped hover className="table">
         <thead>
           <tr>
             <th>

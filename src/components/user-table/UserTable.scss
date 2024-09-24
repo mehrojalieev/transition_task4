@@ -1,0 +1,66 @@
+.user-table-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+  
+    .table {
+      border-radius: 8px;
+      overflow: hidden;
+  
+      th, td {
+        vertical-align: middle;
+        text-align: center;
+      }
+  
+      th {
+        background-color: #007bff;
+        color: white;
+        border-bottom: 2px solid #dee2e6;
+      }
+  
+      td {
+        border-bottom: 1px solid #dee2e6;
+        color: #333;
+      }
+  
+      // Checkbox column styling
+      input[type="checkbox"] {
+        transform: scale(1.2);
+        cursor: pointer;
+      }
+  
+      // Responsive behavior for mobile screens
+      @media (max-width: 768px) {
+        th:nth-child(2),
+        td:nth-child(2) {
+          display: none; // Hide the ID column on small screens
+        }
+  
+        th, td {
+          padding: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  
+    .table-actions {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+  
+      .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+    }
+  }
+  
